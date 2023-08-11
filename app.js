@@ -26,12 +26,30 @@ function levelUp(){
     let randIdx = Math.floor(Math.random()*4);
     let randColor = btns[randIdx];
     let randBtn = document.querySelector(`.${randColor}`);
-    btnFlash(randBtn);
+    gameFlash(randBtn);
 }
 
-function btnFlash(btn){
+function gameFlash(btn){
     btn.classList.add("flash");
     setTimeout(function(){
         btn.classList.remove("flash");
     },200);
+}
+
+function userFlash(btn){
+    btn.classList.add("userFlash");
+    setTimeout(function(){
+        btn.classList.remove("userFlash");
+    },200);
+}
+
+function btnPress(){
+  console.log(this);
+  let btn=this;
+  userFlash(btn);
+}
+
+let allBtns = document.querySelectorAll(".btn");
+for(btn of allBtns){
+    btn.addEventListener("click",btnPress);
 }
